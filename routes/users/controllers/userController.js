@@ -16,14 +16,15 @@ module.exports = {
         return res.redirect('/api/users/register');
       }
       user = await new User({ profile: { name }, email, password });
-      await user.save();
-      await req.login(user, (err) => {
-        if (err) {
-          return res.status(400).json({ confirmation: false, message: err });
-        } else {
-          // res.redirect(301, '/');
-          next();
-        }
+      await user.save().then((user) => {
+        req.login(user, (err) => {
+          if (err) {
+            return res.status(400).json({ confirmation: false, message: err });
+          } else {
+            next();
+            // res.redirect("/api/users")
+          }
+        });
       });
     } catch (error) {
       return res.status(500).json({ message: 'Failed', error });

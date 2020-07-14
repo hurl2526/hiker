@@ -1,7 +1,8 @@
 const Fav = require('../models/Fav');
 module.exports = {
   createUserFav: (req, res) => {
-    let Fav = new Fav();
+    console.log("createUserFav")
+    let fav = new Fav();
     fav.owner = req.user._id;
     fav.save((error) => {
       if (error) {
@@ -9,7 +10,7 @@ module.exports = {
           .status(500)
           .json({ confirmation: 'failure', message: error });
       } else {
-        return res.redirect('/');
+        return res.redirect("/api/users");
       }
     });
   }

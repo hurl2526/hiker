@@ -15,7 +15,11 @@ const { check, validationResult } = require('express-validator');
 const {createUserFav} = require('../fav/controllers/favControllers')
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  res.send('respond with a resource');
+
+  //do axios call here or in another route and redirect to /
+  const trails = ["string 1","string 2"]
+  res.render("main/home-trails",{trails})
+  // res.send('respond with a resource');
 });
 
 // const checkRegister = [

@@ -25,16 +25,17 @@ const paginate = (req, res, next) => {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  if (req.user) {
-    return paginate(req, res, next);
-  }
+  // if (req.user) {
+  //   return paginate(req, res, next);
+  // }
   // console.log(req.session)
-  return res.render('main/home',{trailsArray});
+  // return res.render('main/home',{trailsArray});
+  return res.render('main/home')
 });
 
-router.get('/page/:pageNumber',(req,res,next)=>{
-  return paginate(req,res,next)
-})
+// router.get('/page/:pageNumber',(req,res,next)=>{
+//   return paginate(req,res,next)
+// })
 
 router.get('/logout', (req, res) => {
   console.log('logout', req.session.cookie);
