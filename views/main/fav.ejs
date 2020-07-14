@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -75,14 +75,14 @@
       }
     </style>
     <!--Boostnipp Template for cart https://bootsnipp.com/snippets/ZXKKD -->
-    <title>Online Shopper Cart</title>
+    <title>Favorites</title>
   </head>
   <body>
     <% include ../partials/navbar %>
       <div class="container mb-4">
         <div class="row">
         <div class="col-md-12">
-        <h1 id="cart-user">Shopping Cart for: <span> <%=user.profile.name.toUpperCase()%></span></h1>
+        <h1 id="cart-user">Favs for: <span> <%=user.profile.name.toUpperCase()%></span></h1>
         </div>
           <div class="col-12">
             <% if (messages.length > 0) { %>
@@ -103,7 +103,7 @@
                 <thead>
                   <tr>
                     <th scope="col"></th>
-                    <th scope="col">Product</th>
+                    <th scope="col">Trail</th>
                     <th scope="col">Available</th>
                     <th scope="col" class="text-center">Quantity</th>
                     <th scope="col" class="text-right">Price</th>
@@ -112,25 +112,25 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <% if(foundCart!==null){ for(let i = 0; i <
-                    foundCart.items.length; i++){ %>
+                    <% if(foundFav!==null){ for(let i = 0; i <
+                    foundFav.items.length; i++){ %>
                     <td>
                       <img id="cart-images"
-                        src="<%=foundCart.items[i].item.image%>"
+                        src="<%=foundFav.items[i].item.image%>"
                       />
                     </td>
-                    <td><%=foundCart.items[i].item.name%></td>
+                    <td><%=foundFav.items[i].item.name%></td>
                     <td>In stock</td>
                     <td style="text-align:center">
-                      <%=foundCart.items[i].quantity%>
+                      <%=foundFav.items[i].quantity%>
                     </td>
                     <td class="text-right">
-                      $<%=foundCart.items[i].item.price%>
+                      $<%=foundFav.items[i].item.price%>
                     </td>
                     <td class="text-right">
-                      <form method="post" action="/api/cart/product/remove">
-                        <input type="hidden" name="item" value="<%=foundCart.items[i]._id%>"/>
-                        <input type="hidden" name="price" value="<%=foundCart.items[i].price%>"/>
+                      <form method="post" action="/api/cart/trail/remove">
+                        <input type="hidden" name="item" value="<%=foundFav.items[i]._id%>"/>
+                        <input type="hidden" name="price" value="<%=foundFav.items[i].price%>"/>
                         <button type="submit" class="btn btn-sm btn-danger">
                       </form>
                         <i class="fa fa-trash"></i>
@@ -138,7 +138,7 @@
                     </td>
                   </tr>
                   <% }}else{%>
-                  <h1>Your Cart Is Empty</h1>
+                  <h1>Your Favorites are Empty</h1>
                   <% } %>
                   <tr>
                     <td></td>
@@ -146,7 +146,7 @@
                     <td></td>
                     <td></td>
                     <td>Sub-Total</td>
-                    <td class="text-right">$<%=foundCart.total.toFixed(2)%></td>
+                    <td class="text-right">$<%=foundFav.total.toFixed(2)%></td>
                   </tr>
                   <tr>
                     <td></td>
@@ -154,7 +154,7 @@
                     <td></td>
                     <td></td>
                     <td>Shipping:</td>
-                    <%if(foundCart.total !== 0.00){%>
+                    <%if(foundFav.total !== 0.00){%>
                     <td class="text-right">$5.99</td>
                     <%}else{%>
                       <td class="text-right">0.00</td>
@@ -166,8 +166,8 @@
                     <td></td>
                     <td></td>
                     <td><strong>Total</strong></td>
-                      <%if(foundCart.total !== 0.00){%>
-                    <td class="text-right"><strong>$<%=foundCart.total + 5.99%></strong></td>
+                      <%if(foundFav.total !== 0.00){%>
+                    <td class="text-right"><strong>$<%=foundFav.total + 5.99%></strong></td>
                     <%}else{%>
                       <td class="text-right"><strong>$0.00</strong></td>
                     <%}%>
@@ -199,4 +199,4 @@
       </div>
     <% include ../partials/scripts %>
   </body>
-</html> -->
+</html>

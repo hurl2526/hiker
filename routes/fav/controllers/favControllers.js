@@ -1,9 +1,9 @@
-const Cart = require('../models/Cart');
+const Fav = require('../models/Fav');
 module.exports = {
-  createUserCart: (req, res) => {
-    let cart = new Cart();
-    cart.owner = req.user._id;
-    cart.save((error) => {
+  createUserFav: (req, res) => {
+    let Fav = new Fav();
+    fav.owner = req.user._id;
+    fav.save((error) => {
       if (error) {
         return res
           .status(500)

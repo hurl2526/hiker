@@ -15,9 +15,9 @@ require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users/usersRoutes');
-// const adminRouter = require('./routes/admin/adminRoutes');
-// const productRouter = require('./routes/admin/trails/trailRoutes');
-// const cartRouter = require('./routes/fav/favRoutes');
+const adminRouter = require('./routes/admin/adminRoutes');
+const trailRouter = require('./routes/admin/trails/trailRoutes');
+const favRouter = require('./routes/fav/favRoutes');
 
 const app = express();
 
@@ -75,9 +75,9 @@ app.use(function (req, res, next) {
 });
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
-// app.use('/api/admin', adminRouter);
-// app.use('/api/trails',trailRouter)
-// app.use('/api/fav',favRouter)
+app.use('/api/admin', adminRouter);
+app.use('/api/trails',trailRouter)
+app.use('/api/fav',favRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

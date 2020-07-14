@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <% include ../partials/head %>
@@ -47,22 +47,22 @@
         </div>
         <div class="container">
           <div class="row">
-            <% for( let i = 0; i < productsArray.length; i++ ) { %>
+            <% for( let i = 0; i < trailsArray.length; i++ ) { %>
             <div class="col-md-4" style="margin-bottom: 30px;">
               <div class="card" style="border-radius: 0;">
                 <a
-                  href="/api/products/single-product/<%=productsArray[i].id%>"
+                  href="/api/trails/single-trail/<%=trailsArray[i].id%>"
                   style="text-decoration: none; color: #000;"
                 >
                   <img
-                    src="<%=productsArray[i].image%>"
+                    src="<%=trailsArray[i].image%>"
                     alt="..."
                     class="card-img-top"
                   />
                   <div class="card-body">
-                    <h5 class="card-title"><%= productsArray[i].name %></h5>
+                    <h5 class="card-title"><%= trailsArray[i].name %></h5>
                     <p class="card-text">
-                      Category: <%=productsArray[i].category %>
+                      Category: <%=trailsArray[i].category %>
                     </p>
                   </div>
                 </a>
@@ -73,4 +73,4 @@
   <% include ../partials/footer %>
   <% include ../partials/scripts %>
   </body>
-</html> -->
+</html>

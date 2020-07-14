@@ -1,26 +1,26 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <% include ../partials/head %>
-    <title><%= product.name %>-Online Shopper</title>
+    <title><%= trail.name %>-Online Shopper</title>
   </head>
   <body>
     <% include ../partials/navbar %>
-    <div class="container single-product">
+    <div class="container single-trail">
       <hr class="colorgraph single-hr" />
       <div class="row">
         <div class="col-md-6 col-xs-6">
           <div class="thumbnail">
             <img
               style="height: 20em; width: 27em;"
-              src="<%= product.image %>"
+              src="<%= trail.image %>"
               alt="..."
               class="img-responsive"
             />
           </div>
           <div class="caption">
-            <h3><%= product.name %></h3>
-            <p><%= product.description %></p>
+            <h3><%= trail.name %></h3>
+            <p><%= trail.description %></p>
           </div>
         </div>
         <div
@@ -28,9 +28,9 @@
           style="padding-top: 100px; margin: 0 auto;"
         >
           <h3>
-            Price Per Item: <label for="price">$<%= product.price %> </label>
+            Price Per Item: <label for="price">$<%= trail.price %> </label>
           </h3>
-          <form method="post" action="/api/cart/<%= product._id %>" aria-label="...">
+          <form method="post" action="/api/fav/<%= trail._id %>" aria-label="...">
             <div class="btn-group" role="group">
               <input type="hidden" name="quantity" id="quantity" value="1" />
               <button
@@ -61,22 +61,22 @@
             <div class="form-group">
               <input
                 type="hidden"
-                name="product_id"
-                id="product"
-                value="<%=product._id%>"
+                name="trail_id"
+                id="trail"
+                value="<%=trail._id%>"
               />
               <input
                 type="hidden"
                 name="priceHidden"
                 id="priceHidden"
-                value="<%=product.price%>"
+                value="<%=trail.price%>"
               />
               <input
                 style="font-weight:400;"
                 type="text"
                 name="item"
                 class="form-control"
-                value="<%=product.name%>"
+                value="<%=trail.name%>"
                 readonly
               />
               <input
@@ -85,13 +85,13 @@
                 name="priceValue"
                 id="priceValue"
                 class="form-control"
-                value="<%=product.price%>"
+                value="<%=trail.price%>"
                 readonly
               />
             </div>
             <%if (user){%>
             <button type="submit" class="btn btn-primary btn-lg">
-              Add to Cart
+              Add to Favorites
             </button>
             <%} else {%>
             <a href="/api/users/register" class="btn btn-warning btn-lg"
@@ -105,4 +105,4 @@
     </div>
     <% include ../partials/scripts %>
   </body>
-</html> -->
+</html>
