@@ -9,7 +9,7 @@ router.post('/:trail_id', (req, res, next) => {
         // price: parseFloat(req.body.priceValue),
         // quantity: parseInt(req.body.quantity),
       });
-      // cart.total = (cart.total + parseFloat(req.body.priceValue)).toFixed(2);
+      // fav.total = fav.items.length
 
       fav
         .save()
