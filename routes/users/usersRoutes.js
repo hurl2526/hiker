@@ -56,9 +56,9 @@ router.get('/register', (req, res) => {
 // });
 
 router.get('/login', (req, res) => {
-  // if (req.isAuthenticated()) {
-  //   return res.redirect(301, '/');
-  // }
+  if (req.isAuthenticated()) {
+    return res.redirect(301, '/');
+  }
   return res.render('auth/login');
 });
 
@@ -74,7 +74,7 @@ router.post(
     //goes where?
   }
   },passport.authenticate('local-login', {
-    successRedirect: '/api/users',
+    successRedirect: '/api/users/',
     failureRedirect: '/api/users/login',
     failureFlash: true,
   })
