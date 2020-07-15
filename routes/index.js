@@ -38,7 +38,7 @@ router.get('/', function (req, res, next) {
 // })
 
 router.get('/logout', (req, res) => {
-  console.log('logout', req.session.cookie);
+  // console.log('logout', req.session.cookie);
   // req.logout();
   res.clearCookie('connect.sid', {
     path: '/',
@@ -48,7 +48,8 @@ router.get('/logout', (req, res) => {
   });
   req.session.destroy();
   // console.log('cookie', req.session);
-  return res.redirect('/');
+  // return res.redirect('/');
+  return res.render('auth/login')
 });
 
 module.exports = router;
