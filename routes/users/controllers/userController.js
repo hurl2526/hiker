@@ -22,6 +22,7 @@ module.exports = {
             return res.status(400).json({ confirmation: false, message: err });
           } else {
             next();
+            //goes to 
             // res.redirect("/api/users")
           }
         });

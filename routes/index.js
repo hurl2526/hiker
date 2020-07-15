@@ -29,8 +29,8 @@ router.get('/', function (req, res, next) {
   //   return paginate(req, res, next);
   // }
   // console.log(req.session)
-  // return res.render('main/home',{trailsArray});
-  return res.render('main/home')
+  return res.render('main/home',{trailsArray});
+  // return res.render('main/home')
 });
 
 // router.get('/page/:pageNumber',(req,res,next)=>{
@@ -48,8 +48,8 @@ router.get('/logout', (req, res) => {
   });
   req.session.destroy();
   // console.log('cookie', req.session);
-  // return res.redirect('/');
-  return res.render('auth/login')
+  return res.redirect('/');
+  // return res.render('auth/login')
 });
 
 module.exports = router;

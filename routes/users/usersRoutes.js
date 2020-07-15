@@ -56,9 +56,9 @@ router.get('/register', (req, res) => {
 // });
 
 router.get('/login', (req, res) => {
-  if (req.isAuthenticated()) {
-    return res.redirect(301, '/');
-  }
+  // if (req.isAuthenticated()) {
+  //   return res.redirect(301, '/');
+  // }
   return res.render('auth/login');
 });
 
@@ -71,13 +71,18 @@ router.post(
     return res.redirect('/api/users/login')
   }else {
     next()
+    //goes where?
   }
   },passport.authenticate('local-login', {
-    successRedirect: '/',
+    successRedirect: '/api/users',
     failureRedirect: '/api/users/login',
     failureFlash: true,
   })
 );
+
+// router.post('/login', (req,res,next)=>{
+//   res.redirect('/api/users')
+// })
 
 
 // router.post('/add-category',checkCategory, (req, res, next) => {
