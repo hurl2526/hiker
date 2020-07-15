@@ -12,14 +12,20 @@ const axios = require('axios');
 // });
 
 
-router.get('/:zipCode',function(req,res,next){
+router.get('/:zipCode',async (req,res,next)=>{
+  try {
   let zip = req.params.zipCode
-  const url = `https://prescriptiontrails.org/api/filter/?zip=87102&by=${zip}&offset=0&count=6`
-  const result = axios.get(url);
-  let data = result.trails
-  console.log(result)
-  console.log(data)
+  console.log(zip)
+  // const url = `https://prescriptiontrails.org/api/filter/?zip=87102&by=${zip}&offset=0&count=6`
+  // const url =`https://prescriptiontrails.org/api/filter/?by=city&city=Albuquerque&offset=0&count=6`
+  const url = `https://prescriptiontrails.org/api/filter/?zip=${zip}&by=zip&offset=0&count=6`
+  const result = await axios.get(url);
+  let data = result.data
+  console.log(data.trails)
   return res.render("main/trails", {data})
+  }catch(err){
+    next(err)
+  }
 })
 
 router.get('/single-trail/:id', (req, res, next) => {
