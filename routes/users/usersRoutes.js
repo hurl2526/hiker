@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('./models/User');
+const axios = require('axios');
 const {
   register,
   updateProfile,
@@ -13,20 +14,29 @@ const { check, validationResult } = require('express-validator');
 
 
 const {createUserFav} = require('../fav/controllers/favControllers')
-/* GET users listing. */
-router.get('/', function (req, res, next) {
 
-  //do axios call here or in another route and redirect to /
+
+
+// api/users/  route 
+router.get('/', function (req, res, next) {
+  //just put the city or zip search bar here
+
   const trails = ["string 1","string 2"]
   res.render("main/home-trails",{trails})
   // res.send('respond with a resource');
 });
 
-// const checkRegister = [
-//   check('name', 'Name is required').not().isEmpty(),
-//   check('email', 'Please include valid email').isEmail(),
-//   check('password', 'Please include valid password').isLength({ min: 6 }),
-// ];
+router.post('/', function(req, res, next){
+
+  // const trails = ["string 1","string 2"]
+  // res.render("main/home-trails",{trails})
+    const zip = req.body.zipCode;
+    return res.redirect(`/api/trails/${zip}`);
+  // } catch (err) {
+  //   next(err);
+  // }
+});
+
 
 router.post('/register', userValidation, register,createUserFav);
 
@@ -105,31 +115,6 @@ router.get('/update-profile', (req, res) => {
   return res.render('auth/update-profile');
 });
 
-// router.put('/update-profile', (req, res, next) => {
-//   return new Promise((resolve, reject) => {
-//     User.findById({ _id: req.user._id })
-//       .then((user) => {
-//         const {
-//           email,
-//           address,
-//         } = req.body;
-//         if (req.body.name) user.profile.name = req.body.name;
-//         if (email) user.email = email;
-//         if (address) user.address = address;
-//         return user;
-//       })
-//       .then((user) => {
-//         user
-//           .save()
-//           .then((user) => {
-//             return res.json({ user });
-//             //resolve(user)
-//           })
-//           .catch((err) => reject(err));
-//       })
-//       .catch((err) => reject(err));
-//   });
-// });
 const checkPassword = [
   check('oldPassword', 'Please include valid password').isLength({ min: 6 }),
   check('newPassword', 'Please include valid password').isLength({ min: 6 }),
