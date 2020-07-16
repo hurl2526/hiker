@@ -1,7 +1,7 @@
 const Fav = require('../models/Fav');
 module.exports = {
   createUserFav: (req, res) => {
-    console.log("createUserFav")
+    // console.log("createUserFav")
     let fav = new Fav();
     fav.owner = req.user._id;
     fav.save((error) => {
