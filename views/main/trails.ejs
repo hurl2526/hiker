@@ -1,1 +1,6 @@
-<p>hi <%= data %> </p>
+<p>hi <%= data.trails[0].name %>, <%= data.trails[0].desc.replace(/%20/g,' ').replace("%2C",' ') %>  </p>
+
+
+ <% data.trails.forEach(trail => { %>
+  <li><%= trail.name  %> </li>
+ <% }) %>
