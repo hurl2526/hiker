@@ -28,6 +28,14 @@ const axios = require('axios');
 //   }
 // })
 
+router.get('/single-trail', (req, res, next) => {
+  // Trail.findById({ _id: req.params.id }).then((foundTrail) => {
+  //   return res.render('main/single-trail', { trail: foundTrail });
+  // });
+  return res.send('hello');
+  // return res.render('main/single-trail');
+});
+
 //new api
 router.get('/:zip', async (req, res, next) => {
   try {
@@ -74,11 +82,4 @@ router.get('/:lat/:lon', function (req, res, next) {
     });
 });
 
-router.get('/single-trail', (req, res, next) => {
-  // Trail.findById({ _id: req.params.id }).then((foundTrail) => {
-  //   return res.render('main/single-trail', { trail: foundTrail });
-  // });
-  return res.send('hello');
-  // return res.render('main/single-trail');
-});
 module.exports = router;
