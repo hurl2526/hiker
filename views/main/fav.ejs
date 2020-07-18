@@ -106,7 +106,7 @@
                     <th scope="col">Trail</th>
                     <th scope="col">Available</th>
                     <th scope="col" class="text-center">Quantity</th>
-                    <th scope="col" class="text-right">Price</th>
+                    <!-- <th scope="col" class="text-right">Price</th> -->
                     <th></th>
                   </tr>
                 </thead>
@@ -124,9 +124,9 @@
                     <td style="text-align:center">
                       <%=foundFav.items[i].quantity%>
                     </td>
-                    <td class="text-right">
-                      $<%=foundFav.items[i].item.price%>
-                    </td>
+                    // <td class="text-right">
+                    //   $<%=foundFav.items[i].item.price%>
+                    // </td>
                     <td class="text-right">
                       <form method="post" action="/api/cart/trail/remove">
                         <input type="hidden" name="item" value="<%=foundFav.items[i]._id%>"/>
