@@ -8,7 +8,7 @@ const router = require('express').Router();
 // const Category = require('./categories/models/Category');
 const checkCategory = require('./categories/utils/checkCategory')
 const validation= require('./adminValidation/categoryValidation')
-const createTrail = require('./helper/createTrails')
+const createTrail = require('./trails/helper/createTrails')
 
 
 router.get('/add-category', (req, res, next) => {

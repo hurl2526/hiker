@@ -1,8 +1,8 @@
 const {waterfall} = require('async')
 
 const faker = require('faker')
-const Trail = require('../trails/models/Trail')
-const Category = require('../categories/models/Category');
+const Trail = require('../models/Trail')
+const Category = require('../../categories/models/Category');
 
 
 const createTrail = (req, res, next) => {

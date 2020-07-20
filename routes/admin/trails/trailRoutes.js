@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const Trail = require('./models/Trail');
 const axios = require('axios');
+const createTrail = require('./helper/createTrails');
+const Fav = require('../../fav/models/Fav');
 
 // router.get('/all-trails/:id', (req, res, next) => {
 //   Trail.find({ category: req.params.id })
@@ -49,16 +51,32 @@ router.get('/single-trail/:lat/:lon', (req, res, next) => {
       lat: `${lat}`,
       lon: `${lon}`,
     },
-  })
-    .then((response) => {
+  }).then((response) => {
       console.log(response.data);
       let trails = response.data;
       return res.render('main/trails', { trails });
     })
     .catch((error) => {
       console.log(error);
-    });
-});
+    })
+  })
+
+router.post('/save/single-trail',(req, res, next) =>{
+    // console.log("data:",response.data)
+    // let newFav= new Fav()
+    // newFav.owner = req.user._id
+    Fav.findOne({owner: req.user._id}).then((favorite)=>{
+      const trail = {
+        name : response.data.data[0].name,
+        image: response.data.data[0].thumbnail,
+        description: response.data.data[0].description,
+      }
+      favorite.items.push(trail)
+      // console.log("this is trail",trail)
+      favorite.save()
+    })
+
+})
 // Trail.findById({ _id: req.params.id }).then((foundTrail) => {
 //   return res.render('main/single-trail', { trail: foundTrail });
 // });
