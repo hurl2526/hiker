@@ -54,17 +54,35 @@ router.get('/single-trail/:lat/:lon', (req, res, next) => {
   }).then((response) => {
       console.log(response.data);
       let trails = response.data;
-      return res.render('main/trails', { trails });
+      return res.render('main/single-trail', { trails });
     })
     .catch((error) => {
       console.log(error);
     })
   })
 
-router.post('/save/single-trail',(req, res, next) =>{
-    // console.log("data:",response.data)
-    // let newFav= new Fav()
-    // newFav.owner = req.user._id
+router.post('/save/single-trail/:lat/:lon',(req, res, next) =>{
+  let lat = req.params.lat;
+  let lon = req.params.lon;
+  const api = '0b539ff2a9msh7d3f5f23a531e1cp1d0c8ejsn4e597722bd11';
+  // const currentDate = await Date.now();
+  axios({
+    method: 'GET',
+    url: 'https://trailapi-trailapi.p.rapidapi.com/trails/explore/',
+    headers: {
+      'content-type': 'application/octet-stream',
+      'x-rapidapi-host': 'trailapi-trailapi.p.rapidapi.com',
+      'x-rapidapi-key': '0b539ff2a9msh7d3f5f23a531e1cp1d0c8ejsn4e597722bd11',
+      useQueryString: true,
+    },
+    params: {
+      page: '1',
+      per_page: '1',
+      radius: '1 miles',
+      lat: `${lat}`,
+      lon: `${lon}`,
+    },
+  }).then((response) => {
     Fav.findOne({owner: req.user._id}).then((favorite)=>{
       const trail = {
         name : response.data.data[0].name,
@@ -75,8 +93,19 @@ router.post('/save/single-trail',(req, res, next) =>{
       // console.log("this is trail",trail)
       favorite.save()
     })
+      // console.log(response.data);
+      // let trails = response.data;
+      return res.render('main/single-trail', { trails });
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  })
+  
+    // console.log("data:",response.data)
+    // let newFav= new Fav()
+    // newFav.owner = req.user._i
 
-})
 // Trail.findById({ _id: req.params.id }).then((foundTrail) => {
 //   return res.render('main/single-trail', { trail: foundTrail });
 // });

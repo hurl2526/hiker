@@ -1,113 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <% include ../partials/head %>
-    <title><%= trail.data.name %>-Hiker</title>
-  </head>
-  <body>
-    <% include ../partials/navbar %>
-    <div class="container single-trail">
-      <hr class="colorgraph single-hr" />
-      <div class="row">
-        <div class="col-md-6 col-xs-6">
-          <div class="thumbnail">
-            <img
-              style="height: 20em; width: 27em;"
-              src="<%= trail.data.image %>"
-              alt="..."
-              class="img-responsive"
-            />
-          </div>
-          <div class="caption">
-            <h3><%= trail.data.name %></h3>
-            <p><%= trail.data.description %></p>
-          </div>
-        </div>
-        <div
-          class="col-md-4 col-xs-6 price"
-          style="padding-top: 100px; margin: 0 auto;"
-        >
-          <h3>
-            Price Per Item: <label for="price">id:<%= trail.data.id %> </label>
-          </h3>
-          <form method="post" action="/api/fav/<%= trail._id %>" aria-label="...">
-            <div class="btn-group" role="group">
-              <input type="hidden" name="quantity" id="quantity" value="1" />
-              <button
-                class="item-count"
-                type="button"
-                id="minus"
-                class="btn"
-              >
-                -
-              </button>
-              <button
-                class="item-count"
-                type="button"
-                id="total"
-                class="btn"
-              >
-                1
-              </button>
-              <button
-                class="item-count"
-                type="button"
-                id="plus"
-                class="btn"
-              >
-                +
-              </button>
-            </div>
-            <div class="form-group">
-              <input
-                type="hidden"
-                name="trail_id"
-                id="trail"
-                value="<%=trail._id%>"
-              />
-              <input
-                type="hidden"
-                name="priceHidden"
-                id="priceHidden"
-                value="<%=trail.price%>"
-              />
-              <input
-                style="font-weight:400;"
-                type="text"
-                name="item"
-                class="form-control"
-                value="<%=trail.name%>"
-                readonly
-              />
-              <input
-                style="font-weight:400;"
-                type="text"
-                name="priceValue"
-                id="priceValue"
-                class="form-control"
-                value="<%=trail.price%>"
-                readonly
-              />
-            </div>
-            <%if (user){%>
-            <a href="/api/trails/save/single-trail/"type="submit" class="btn btn-primary btn-lg">
-              Add to Favorites
-            </a>
-            <%} else {%>
-            <a href="/api/users/register" class="btn btn-warning btn-lg"
-              >Signup to Begin Buying</a
-            >
-            <%} %>
-          </form>
-        </div>
-      </div>
-      <hr style="margin-top: 40px;" class="colorgraph single-hr" />
-    </div>
-    <% include ../partials/scripts %>
-  </body>
-</html>
 
-<!-- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <% include ../partials/head %>
@@ -119,7 +12,7 @@
       <main role="main">
         <div class="jumbotron my-jumbotron">
           <h1 class="display-1 my-h1">Treasure Hikers</h1>
-          <h4 class="display-5">Your Hiking Guide</h4>
+          <h4 class="display-5">single Hiking Guide</h4>
         </div>
         <div class="container">
           <div class="row">
@@ -140,7 +33,7 @@
                     <p class="card-text">
                       Trail ID: <%=trails.data[i].id %>
                     </p>
-                    <a href="#" class="btn btn-success">Add to Favorites</a>
+                    <a href="/api/trails/save/single-trail/<%= ${trails.data[i].lat} %>/<%= ${trails.data[i].lon} %>"  class="btn btn-success">Add to Favorites</a>
                   </div>
                 </a>
               </div>
@@ -152,4 +45,4 @@
     </div>
     <% include ../partials/footer %> <% include ../partials/scripts %>
   </body>
-</html> -->
+</html>
