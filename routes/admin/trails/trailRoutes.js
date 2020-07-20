@@ -73,7 +73,7 @@ router.get('/:lat/:lon', function (req, res, next) {
     },
   })
     .then((response) => {
-      // console.log(response.data);
+      console.log(response.data);
       let trails = response.data;
       return res.render('main/trails', { trails });
     })
