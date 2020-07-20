@@ -4,15 +4,6 @@ const axios = require('axios');
 const createTrail = require('./helper/createTrails');
 const Fav = require('../../fav/models/Fav');
 
-// router.get('/all-trails/:id', (req, res, next) => {
-//   Trail.find({ category: req.params.id })
-//     .populate('category')
-//     .exec((err, foundTrails) => {
-//       if (err) return next(err);
-//       return res.render('main/category', { trails: foundTrails });
-//     });
-// });
-
 //old api
 // router.get('/:city',async (req,res,next)=>{
 //   try {
@@ -61,7 +52,7 @@ router.get('/single-trail/:lat/:lon', (req, res, next) => {
     })
   })
 
-router.post('/save/single-trail/:lat/:lon',(req, res, next) =>{
+router.get('/save/single-trail/:lat/:lon',(req, res, next) =>{
   let lat = req.params.lat;
   let lon = req.params.lon;
   const api = '0b539ff2a9msh7d3f5f23a531e1cp1d0c8ejsn4e597722bd11';
@@ -83,11 +74,12 @@ router.post('/save/single-trail/:lat/:lon',(req, res, next) =>{
       lon: `${lon}`,
     },
   }).then((response) => {
+    let foundTrails = response.data;
     Fav.findOne({owner: req.user._id}).then((favorite)=>{
       const trail = {
-        name : response.data.data[0].name,
-        image: response.data.data[0].thumbnail,
-        description: response.data.data[0].description,
+        name : foundTrails.data[0].name,
+        image: foundTrails.data[0].thumbnail,
+        description: foundTrails.data[0].description,
       }
       favorite.items.push(trail)
       // console.log("this is trail",trail)
@@ -95,7 +87,8 @@ router.post('/save/single-trail/:lat/:lon',(req, res, next) =>{
     })
       // console.log(response.data);
       // let trails = response.data;
-      return res.render('main/single-trail', { trails });
+      req.flash('messages', `Successfully added ${foundTrails.data[0].name} to your favorites list! `)
+      return res.render('main/single-trail-saved',{foundTrails});
     })
     .catch((error) => {
       console.log(error);
@@ -124,6 +117,9 @@ router.get('/:zip', async (req, res, next) => {
     const info = await axios.get(url);
     const lat = info.data.lat;
     const lon = info.data.lng;
+    res.locals.lat = lat
+    res.locals.lon = lon
+    console.log("res loacals",res.locals)
     return res.redirect(`all/${lat}/${lon}`);
   } catch (err) {
     console.log(err);
