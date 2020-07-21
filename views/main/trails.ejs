@@ -18,7 +18,7 @@
             <div class="col-md-4" style="margin-bottom: 30px;">
               <div class="card" style="border-radius: 0;">
                 <a
-                  href="/api/trails/single-trail/<%=trails.data[i].lat%>/<%=trails.data[i].lon%>"
+                  href="/api/trails/single-trail/<%=trails.data[i].lat%>/<%=trails.data[i].lon%>/<%= allLat %>/<%= allLon %>"
                   style="text-decoration: none; color: #000;"
                 >
                   <img
@@ -31,7 +31,11 @@
                     <p class="card-text">
                       Trail ID: <%=trails.data[i].id %>
                     </p>
-                    <a href="/api/trails/save/single-trail/<%=trails.data[i].lat%>/<%=trails.data[i].lon%>" class="btn btn-success">Add to Favorites</a>
+                    <a
+                      href="/api/trails/save/single-trail/<%=trails.data[i].lat%>/<%=trails.data[i].lon%>/<%= allLat %>/<%= allLon %>  "
+                      class="btn btn-success"
+                      >Add to Favorites</a
+                    >
                   </div>
                 </a>
               </div>
@@ -44,7 +48,6 @@
     <% include ../partials/footer %> <% include ../partials/scripts %>
   </body>
 </html>
-
 <!-- {
   results: 5,
   data: [
