@@ -3,6 +3,7 @@ const Trail = require('./models/Trail');
 const axios = require('axios');
 const createTrail = require('./helper/createTrails');
 const Fav = require('../../fav/models/Fav');
+const Treasure = require('../../admin/categories/models/Category')
 //old api
 // router.get('/:city',async (req,res,next)=>{
 //   try {
@@ -19,6 +20,39 @@ const Fav = require('../../fav/models/Fav');
 //     next(err)
 //   }
 // })
+
+router.get('/show-treasure/:id/:lat/:lon', (req, res, next) => {
+  let id = req.params.id;
+  let lat = req.params.lat;
+  let lon = req.params.lon;
+  Treasure.findOne({ id: req.params.id }).then((results) =>{
+    console.log(results)
+    return res.render('main/show-treasure', { results })
+  })
+})
+router.get('/add-treasure/:id/:lat/:lon', (req, res, next) => {
+  let id = req.params.id;
+  let lat = req.params.lat;
+  let lon = req.params.lon;
+  return res.render('main/add-treasure', { id, lat, lon })
+})
+router.post('/add-treasure/:id/:lat/:lon', (req, res, next) => {
+  let id = req.params.id;
+  let lat = req.params.lat;
+  let lon = req.params.lon;
+  const treasure = new Treasure();
+  treasure.id = id;
+  treasure.name = req.body.name;
+  treasure.description = req.body.description;
+  treasure.lat = lat;
+  treasure.lon = lon;
+  treasure
+    .save()
+    .then(() =>{
+      req.flash('messages', `Successfully added ${req.body.name} to this trail`);
+      return res.render('main/success')
+    })
+})
 router.get('/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
   let lat = req.params.lat;
   let lon = req.params.lon;

@@ -15,7 +15,7 @@ require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users/usersRoutes');
-const adminRouter = require('./routes/admin/adminRoutes');
+// const adminRouter = require('./routes/admin/adminRoutes');
 const trailRouter = require('./routes/admin/trails/trailRoutes');
 const favRouter = require('./routes/fav/favRoutes');
 
@@ -73,7 +73,7 @@ app.use(function (req, res, next) {
 });
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
-app.use('/api/admin', adminRouter);
+// app.use('/api/admin', adminRouter);
 app.use('/api/trails',trailRouter)
 app.use('/api/fav',favRouter)
 

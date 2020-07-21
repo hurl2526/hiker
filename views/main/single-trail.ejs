@@ -36,6 +36,14 @@
                       class="btn btn-success"
                       >Add to Favorites</a
                     >
+                    <a
+                    href="/api/trails/show-treasure/<%= trails.data[i].id %>/<%=trails.data[i].lat%>/<%=trails.data[i].lon%>"
+                    class="btn btn-success"
+                    >Reveal Treasure on this Trail</a>
+                    <a
+                    href="/api/trails/add-treasure/<%= trails.data[i].id %>/<%=trails.data[i].lat%>/<%=trails.data[i].lon%>"
+                    class="btn btn-success"
+                    >Add Treasure to this Trail</a>
                   </div>
                 </a>
               </div>
