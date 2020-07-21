@@ -25,8 +25,8 @@ router.get('/show-treasure/:id/:lat/:lon', (req, res, next) => {
   let id = req.params.id;
   let lat = req.params.lat;
   let lon = req.params.lon;
-  Treasure.findOne({ id: req.params.id }).then((results) =>{
-    console.log(results)
+  Treasure.find({ id: req.params.id }).then((results) =>{
+    console.log( results)
     return res.render('main/show-treasure', { results })
   })
 })
@@ -42,7 +42,7 @@ router.post('/add-treasure/:id/:lat/:lon', (req, res, next) => {
   let lon = req.params.lon;
   const treasure = new Treasure();
   treasure.id = id;
-  treasure.name = req.body.name;
+  treasure.location = req.body.location;
   treasure.description = req.body.description;
   treasure.lat = lat;
   treasure.lon = lon;

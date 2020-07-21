@@ -1,1 +1,9 @@
-<p>show the treasure here</p><%= results.name %>,<%= results.description %>
+<h1>Treasures On This Trail:</h1>
+<ol>
+<% for( let i = 0; i < results.length; i++ ) { %>
+<li>
+Description:<%= results[i].description %></br></br>Location: <%= results[i].location %> </br></br> 
+</li>
+<% } %> 
+</ol>
+<h1>Happy Hunting!</h1>
