@@ -13,7 +13,7 @@
           <h4 class="display-5">Successfully saved to favorites</h4>
         </div>
         <div class="container">
-          <%= messages %> 
+          <%= messages %>
           <div class="row">
             <% for( let i = 0; i < foundTrails.data.length; i++ ) { %>
             <div class="col-md-4" style="margin-bottom: 30px;">
@@ -32,12 +32,22 @@
                     <p class="card-text">
                       Trail ID: <%=foundTrails.data[i].id %>
                     </p>
-                    <a href="/api/trails/save/single-trail/<%=foundTrails.data[i].lat%>/<%=foundTrails.data[i].lon%>" class="btn btn-success">Add to Favorites</a>
+                    <a
+                      href="/api/trails/save/single-trail/<%=foundTrails.data[i].lat%>/<%=foundTrails.data[i].lon%>"
+                      class="btn btn-success"
+                      >Add to Favorites</a
+                    >
                   </div>
                 </a>
-                <p>Maybe add a back to search button here that redirects back to all trails search</p>
-                <% console.log("latitude",lat) %> 
-                <a href="/api/trails/all/<%=lat%>/<%=lon%>" class="btn btn-success">Back To Search Results</a>
+                <p>
+                  Maybe add a back to search button here that redirects back to
+                  all trails search
+                </p>
+                <a
+                  href="/api/trails/all/<%= allLat %>/<%= allLon %>  "
+                  class="btn btn-success"
+                  >Back To Search Results</a
+                >
               </div>
             </div>
             <% } %>

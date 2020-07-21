@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,7 +31,11 @@
                     <p class="card-text">
                       Trail ID: <%=trails.data[i].id %>
                     </p>
-                    <a href="/api/trails/save/single-trail/<%=trails.data[i].lat%>/<%=trails.data[i].lon%>" class="btn btn-success">Add to Favorites</a>
+                    <a
+                      href="/api/trails/save/single-trail/<%=trails.data[i].lat%>/<%=trails.data[i].lon%>/<%= allLat %>/<%= allLon %>  "
+                      class="btn btn-success"
+                      >Add to Favorites</a
+                    >
                   </div>
                 </a>
               </div>
