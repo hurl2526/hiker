@@ -37,7 +37,7 @@ router.post('/riddle/:trailId/:riddleId',(req,res,next)=>{
     return riddle.id.toString() === ridId.toString()
   })
   console.log(riddle)
-  if(answer=== riddle[0].answer){
+  if(answer.toLowerCase()=== riddle[0].answer || riddle[0].answer2){
     res.redirect(`/api/trails/show-treasure/${trailId}`)
   }else {
     res.redirect(`/api/trails/riddle/${trailId}`)
