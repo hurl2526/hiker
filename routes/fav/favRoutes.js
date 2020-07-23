@@ -25,6 +25,7 @@ router.get('/', (req, res, next) => {
   Fav.findOne({ owner: req.user._id })
     .populate('items.item')
     .exec((err, foundFavs) => {
+      console.log(foundFavs)
       if (err) return next(err);
       // console.log(foundFavs);
       return res.render('main/fav', {

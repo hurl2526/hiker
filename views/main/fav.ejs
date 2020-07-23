@@ -102,35 +102,36 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col"></th>
+                    <th scope="col">Thumbnail</th>
                     <th scope="col">Trail Name</th>
                     <th scope="col">Trail ID</th>
                     <th scope="col" class="text-center">Quantity</th>
-                    <th scope="col" class="text-right">Price</th>
+                    <th scope="col" class="text-right">City</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <% if(foundCart!==null){ for(let i = 0; i <
-                    foundCart.items.length; i++){ %>
+                    <% if(foundFavs!==null){ for(let i = 0; i <
+                    foundFavs.items.length; i++){ %>
                     <td>
                       <img id="cart-images"
-                        src="<%=foundCart.items[i].item.image%>"
+                        src="<%=foundFavs.items[i].image%>"
                       />
                     </td>
-                    <td><%=foundCart.items[i].item.name%></td>
-                    <td>In stock</td>
+                    <td><%=foundFavs.items[i].name%></td>
+                    <td><%=foundFavs.items[i]._id </td>
                     <td style="text-align:center">
-                      <%=foundCart.items[i].quantity%>
+                      1
                     </td>
                     <td class="text-right">
-                      $<%=foundCart.items[i].item.price%>
+                      <%=foundFavs.items[i].city%>
                     </td>
                     <td class="text-right">
-                      <form method="post" action="/api/cart/product/remove">
-                        <input type="hidden" name="item" value="<%=foundCart.items[i]._id%>"/>
-                        <input type="hidden" name="price" value="<%=foundCart.items[i].price%>"/>
+                      <form method="post" action="/api/fav/trail/remove">
+                        <input type="hidden" name="item" value="<%=foundFavs.items[i]._id%>"/>
+                        <input type="hidden" name="lat" value="<%=foundFavs.items[i].lat%>"/>
+                        <input type="hidden" name="lon" value="<%=foundFavs.items[i].lon%>"/>
                         <button type="submit" class="btn btn-sm btn-danger">
                       </form>
                         <i class="fa fa-trash"></i>
@@ -140,57 +141,19 @@
                   <% }}else{%>
                   <h1>Your Cart Is Empty</h1>
                   <% } %>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Sub-Total</td>
-                    <td class="text-right">$<%=foundCart.total.toFixed(2)%></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Shipping:</td>
-                    <%if(foundCart.total !== 0.00){%>
-                    <td class="text-right">$5.99</td>
-                    <%}else{%>
-                      <td class="text-right">0.00</td>
-                    <%}%>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><strong>Total</strong></td>
-                      <%if(foundCart.total !== 0.00){%>
-                    <td class="text-right"><strong>$<%=foundCart.total + 5.99%></strong></td>
-                    <%}else{%>
-                      <td class="text-right"><strong>$0.00</strong></td>
-                    <%}%>
-                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
           <div class="col mb-2">
             <div class="row">
-              <div class="col-sm-12  col-md-6">
-                <button class="btn btn-block btn-light">
-                  Continue Shopping
-                </button>
-              </div>
-              <div class="col-sm-12 col-md-6 text-right">
-                <button class="btn btn-lg btn-block btn-info text-uppercase">
-                  Checkout
-                </button>
-              </div>
                <div style="margin-top:20px;" class="col-sm-12 col-md-6 offset-md-3 text-right">
                 <button class="btn btn-lg btn-block btn-success text-uppercase">
-                  Pay With Stripe
+                  <a
+                  href="/api/trails/all/<%= allLat %>/<%= allLon %>  "
+                  class="btn btn-success"
+                  >Back To Search Results</a
+                >
                 </button>
               </div>
             </div>
@@ -203,13 +166,13 @@
 
 
 
-<p>favorites here</p>
-<ul>
-<% if (foundFavs !==null) {for( let i = 0; i < foundFavs.items.length; i++ ) { %>
-<li>
-<%= foundFavs.items[i].name %>
-</li>
-<% }}else{ %> 
-  <h1>Your Cart is Empty</h1>
-<% } %>
-</ul>
+// <p>favorites here</p>
+// <ul>
+// <% if (foundFavs !==null) {for( let i = 0; i < foundFavs.items.length; i++ ) { %>
+// <li>
+// <%= foundFavs.items[i].name %>
+// </li>
+// <% }}else{ %> 
+//   <h1>Your Cart is Empty</h1>
+// <% } %>
+// </ul>

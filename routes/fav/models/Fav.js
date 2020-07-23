@@ -8,6 +8,8 @@ const FavSchema = new Schema({
       name: String,
       image: String,
       city: String,
+      lat: String,
+      lon: String,
       description: String,
       }
   ]

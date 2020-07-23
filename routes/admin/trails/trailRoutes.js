@@ -114,6 +114,8 @@ router.get('/save/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
         const trail = {
           name: foundTrails.data[0].name,
           city: foundTrails.data[0].city,
+          lat: foundTrails.data[0].lat,
+          lon: foundTrails.data[0].lon,
           image: foundTrails.data[0].thumbnail,
           description: foundTrails.data[0].description,
         };
