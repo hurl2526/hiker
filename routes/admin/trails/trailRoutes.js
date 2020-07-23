@@ -113,6 +113,7 @@ router.get('/save/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
       Fav.findOne({ owner: req.user._id }).then((favorite) => {
         const trail = {
           name: foundTrails.data[0].name,
+          city: foundTrails.data[0].city,
           image: foundTrails.data[0].thumbnail,
           description: foundTrails.data[0].description,
         };
