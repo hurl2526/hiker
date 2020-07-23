@@ -4,6 +4,7 @@ const axios = require('axios');
 const createTrail = require('./helper/createTrails');
 const Fav = require('../../fav/models/Fav');
 const Treasure = require('../../admin/categories/models/Category')
+const riddles = require('../../admin/trails/helper/riddles')
 //old api
 // router.get('/:city',async (req,res,next)=>{
 //   try {
@@ -20,11 +21,32 @@ const Treasure = require('../../admin/categories/models/Category')
 //     next(err)
 //   }
 // })
-
-router.get('/show-treasure/:id/:lat/:lon', (req, res, next) => {
-  let id = req.params.id;
-  let lat = req.params.lat;
-  let lon = req.params.lon;
+router.get('/riddle/:trailId',(req,res,next)=>{
+  let trailId = req.params.trailId
+  let oneRiddle = riddles[Math.floor(Math.random()*riddles.length)]
+  // let riddles = [{id:1, question:"riddle",answer:"answer"},{id:2, question:"riddle2",answer:"answer2"}]
+  // let oneRiddle = 
+  res.render('main/riddles', {oneRiddle, trailId})
+})
+router.post('/riddle/:trailId/:riddleId',(req,res,next)=>{
+  let trailId = req.params.trailId
+  let ridId= req.params.riddleId
+  let answer = req.body.answer
+  // let riddles = [{id:1, question:"riddle",answer:"answer"},{id:2, question:"riddle2",answer:"answer2"}]
+  let riddle = riddles.filter((riddle)=>{
+    return riddle.id.toString() === ridId.toString()
+  })
+  console.log(riddle)
+  if(answer=== riddle[0].answer){
+    res.redirect(`/api/trails/show-treasure/${trailId}`)
+  }else {
+    res.redirect(`/api/trails/riddle/${trailId}`)
+  }
+})
+router.get('/show-treasure/:id', (req, res, next) => {
+  // let id = req.params.id;
+  // let lat = req.params.lat;
+  // let lon = req.params.lon;
   Treasure.find({ id: req.params.id }).then((results) =>{
     console.log( results)
     return res.render('main/show-treasure', { results })

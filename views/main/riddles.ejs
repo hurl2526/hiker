@@ -1,0 +1,23 @@
+<%= oneRiddle.question %>
+
+<form
+  role="form"
+  method="POST"
+  action="/api/trails/riddle/<%= trailId %>/<%= oneRiddle.id %>"
+>
+<div>
+  <input
+    type="text"
+    name="answer"
+    id="answer"
+    placeholder="Answer"
+  />
+</div>
+<div>
+  <input
+  type="submit"
+  class="btn btn-lg btn-primary btn-block"
+  value="Submit Answer"
+/>
+</div>
+</form>
