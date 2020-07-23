@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.12.0/css/mdb.min.css"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -73,13 +96,98 @@
           margin:150px 0 40px 0;
           color:black
       }
+      #intro {
+        background: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20%283%29.jpg')
+          no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
+      .top-nav-collapse {
+        background-color: #24355c;
+      }
+      @media (max-width: 768px) {
+        .navbar:not(.top-nav-collapse) {
+          background-color: #24355c;
+        }
+      }
+      @media (min-width: 800px) and (max-width: 850px) {
+        .navbar:not(.top-nav-collapse) {
+          background-color: #24355c;
+        }
+      }
     </style>
     <!--Boostnipp Template for cart https://bootsnipp.com/snippets/ZXKKD -->
     <title>Favorite Trails</title>
   </head>
   <body>
-    <!--Nav bar here-->
-      <div class="container mb-4">
+    <header>
+    <nav
+        class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar"style=
+        "background-color: #24355c;"
+      >
+        <div class="container" style=
+        "background-color: #24355c;">
+          <!-- Navbar brand -->
+          <img
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ft3.ftcdn.net%2Fjpg%2F01%2F84%2F96%2F50%2F240_F_184965071_k6Y8NOQ1NmxYNok4oTlm4GHjnDAFGPtq.jpg&f=1&nofb=1"
+            alt="TH logo"
+            style="width: 2em; height: 2em; border-radius: 50%;"
+            ;
+            <!--
+            Collapse
+            button
+            --
+          />
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#basicExampleNav"
+            aria-controls="basicExampleNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Collapsible content -->
+          <div class="collapse navbar-collapse" id="basicExampleNav">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto smooth-scroll">
+              <li class="nav-item">
+                <a class="nav-link" href="/api/users">Home/Search</a>
+              </li>
+            </ul>
+            <!-- Links -->
+
+            <!-- Social Icon  -->
+            <ul class="navbar-nav nav-flex-icons">
+              <li class="nav-item">
+                <a class="nav-link" style="color:orangered;"href="/api/users/profile"><%=user.profile.name.toUpperCase()%></a>
+              </li>
+              <li class="nav-item">
+                  <a
+                  class="nav-link"
+                    href="/api/fav">
+                    <i
+                    style="color:orangered;""
+                      class="fa fa-shopping-cart"
+                    ></i>
+                  </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Collapsible content -->
+        </div>
+      </nav>
+    </header>
+      <div class="container mb-4" >
         <div class="row">
         <div class="col-md-12">
         <h1 id="cart-user"><span> <%=user.profile.name.toUpperCase()%>'s Favorite Trails</span></h1>
@@ -120,7 +228,7 @@
                       />
                     </td>
                     <td><%=foundFavs.items[i].name%></td>
-                    <td><%=foundFavs.items[i]._id </td>
+                    <td><%=foundFavs.items[i]._id%> </td>
                     <td style="text-align:center">
                       1
                     </td>
@@ -145,34 +253,9 @@
               </table>
             </div>
           </div>
-          <div class="col mb-2">
-            <div class="row">
-               <div style="margin-top:20px;" class="col-sm-12 col-md-6 offset-md-3 text-right">
-                <button class="btn btn-lg btn-block btn-success text-uppercase">
-                  <a
-                  href="/api/trails/all/<%= allLat %>/<%= allLon %>  "
-                  class="btn btn-success"
-                  >Back To Search Results</a
-                >
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     <% include ../partials/scripts %>
   </body>
 </html>
-
-
-
-// <p>favorites here</p>
-// <ul>
-// <% if (foundFavs !==null) {for( let i = 0; i < foundFavs.items.length; i++ ) { %>
-// <li>
-// <%= foundFavs.items[i].name %>
-// </li>
-// <% }}else{ %> 
-//   <h1>Your Cart is Empty</h1>
-// <% } %>
-// </ul>
