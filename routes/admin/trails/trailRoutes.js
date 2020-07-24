@@ -1,63 +1,40 @@
 const router = require('express').Router();
 const Trail = require('./models/Trail');
 const axios = require('axios');
-const createTrail = require('./helper/createTrails');
 const Fav = require('../../fav/models/Fav');
-const Treasure = require('../../admin/categories/models/Category')
-const riddles = require('../../admin/trails/helper/riddles')
-//old api
-// router.get('/:city',async (req,res,next)=>{
-//   try {
-//   let city = req.params.city
-//   console.log(city)
-//   // const url = `https://prescriptiontrails.org/api/filter/?zip=87102&by=${zip}&offset=0&count=6`
-//   const url =`https://prescriptiontrails.org/api/filter/?by=city&city=${city}&offset=0&count=6`
-//   // const url = `https://prescriptiontrails.org/api/filter/?zip=${zip}&by=zip&offset=0&count=6`
-//   const result = await axios.get(url);
-//   let data = result.data
-//   console.log(data)
-//   return res.render("main/trails", {data})
-//   }catch(err){
-//     next(err)
-//   }
-// })
-router.get('/riddle/:trailId',(req,res,next)=>{
-  let trailId = req.params.trailId
-  let oneRiddle = riddles[Math.floor(Math.random()*riddles.length)]
-  // let riddles = [{id:1, question:"riddle",answer:"answer"},{id:2, question:"riddle2",answer:"answer2"}]
-  // let oneRiddle = 
-  res.render('main/riddles', {oneRiddle, trailId})
-})
-router.post('/riddle/:trailId/:riddleId',(req,res,next)=>{
-  let trailId = req.params.trailId
-  let ridId= req.params.riddleId
-  let answer = req.body.answer
-  // let riddles = [{id:1, question:"riddle",answer:"answer"},{id:2, question:"riddle2",answer:"answer2"}]
-  let riddle = riddles.filter((riddle)=>{
-    return riddle.id.toString() === ridId.toString()
-  })
-  console.log(riddle)
-  if(answer.toLowerCase()=== riddle[0].answer || riddle[0].answer2){
-    res.redirect(`/api/trails/show-treasure/${trailId}`)
-  }else {
-    res.redirect(`/api/trails/riddle/${trailId}`)
+const Treasure = require('../../admin/categories/models/Category');
+const riddles = require('../../admin/trails/helper/riddles');
+
+router.get('/riddle/:trailId', (req, res, next) => {
+  let trailId = req.params.trailId;
+  let oneRiddle = riddles[Math.floor(Math.random() * riddles.length)];
+  res.render('main/riddles', { oneRiddle, trailId });
+});
+router.post('/riddle/:trailId/:riddleId', (req, res, next) => {
+  let trailId = req.params.trailId;
+  let ridId = req.params.riddleId;
+  let answer = req.body.answer;
+  let riddle = riddles.filter((riddle) => {
+    return riddle.id.toString() === ridId.toString();
+  });
+  if (answer.toLowerCase() === riddle[0].answer || riddle[0].answer2) {
+    res.redirect(`/api/trails/show-treasure/${trailId}`);
+  } else {
+    res.redirect(`/api/trails/riddle/${trailId}`);
   }
-})
+});
 router.get('/show-treasure/:id', (req, res, next) => {
-  // let id = req.params.id;
-  // let lat = req.params.lat;
-  // let lon = req.params.lon;
-  Treasure.find({ id: req.params.id }).then((results) =>{
-    console.log( results)
-    return res.render('main/show-treasure', { results })
-  })
-})
+  Treasure.find({ id: req.params.id }).then((results) => {
+    console.log(results);
+    return res.render('main/show-treasure', { results });
+  });
+});
 router.get('/add-treasure/:id/:lat/:lon', (req, res, next) => {
   let id = req.params.id;
   let lat = req.params.lat;
   let lon = req.params.lon;
-  return res.render('main/add-treasure', { id, lat, lon })
-})
+  return res.render('main/add-treasure', { id, lat, lon });
+});
 router.post('/add-treasure/:id/:lat/:lon', (req, res, next) => {
   let id = req.params.id;
   let lat = req.params.lat;
@@ -68,13 +45,11 @@ router.post('/add-treasure/:id/:lat/:lon', (req, res, next) => {
   treasure.description = req.body.description;
   treasure.lat = lat;
   treasure.lon = lon;
-  treasure
-    .save()
-    .then(() =>{
-      req.flash('messages', `Successfully added ${req.body.name} to this trail`);
-      return res.render('main/success')
-    })
-})
+  treasure.save().then(() => {
+    req.flash('messages', `Successfully added ${req.body.name} to this trail`);
+    return res.render('main/success',{lat, lon});
+  });
+});
 router.get('/single-trail/:lat/:lon/:allLat/:allLon', (req, res, next) => {
   let lat = req.params.lat;
   let lon = req.params.lon;

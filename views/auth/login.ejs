@@ -31,7 +31,6 @@
     <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
     <style>
       @import url('https://fonts.googleapis.com/css?family=Numans');
-
 html,body{
 background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
 background-size: cover;
@@ -39,12 +38,10 @@ background-repeat: no-repeat;
 height: 100%;
 font-family: 'Numans', sans-serif;
 }
-
 .container{
 height: 100%;
 align-content: center;
 }
-
 .card{
 height: 370px;
 margin-top: auto;
@@ -52,45 +49,36 @@ margin-bottom: auto;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
 }
-
 .social_icon span{
 font-size: 60px;
 margin-left: 10px;
 color: #FFC312;
 }
-
 .social_icon span:hover{
 color: white;
 cursor: pointer;
 }
-
 .card-header h3{
 color: white;
 }
-
 .social_icon{
 position: absolute;
 right: 20px;
 top: -45px;
 }
-
 .input-group-prepend span{
 width: 50px;
 background-color: #FFC312;
 color: black;
 border:0 !important;
 }
-
 input:focus{
 outline: 0 0 0 0  !important;
 box-shadow: 0 0 0 0 !important;
-
 }
-
 .remember{
 color: white;
 }
-
 .remember input
 {
 width: 20px;
@@ -98,33 +86,67 @@ height: 20px;
 margin-left: 15px;
 margin-right: 5px;
 }
-
 .login_btn{
 color: black;
 background-color: #FFC312;
 width: 100px;
 }
-
 .login_btn:hover{
 color: black;
 background-color: white;
 }
-
 .links{
 color: white;
 }
-
 .links a{
 margin-left: 4px;
 };
     </style>
   </head>
   <body>
+    <nav
+        class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar"
+      >
+        <div class="container">
+          <!-- Navbar brand -->
+          <img
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ft3.ftcdn.net%2Fjpg%2F01%2F84%2F96%2F50%2F240_F_184965071_k6Y8NOQ1NmxYNok4oTlm4GHjnDAFGPtq.jpg&f=1&nofb=1"
+            alt="TH logo"
+            style="width: 2em; height: 2em; border-radius: 50%;"
+            ;
+            <!--
+            Collapse
+            button
+            --
+          />
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#basicExampleNav"
+            aria-controls="basicExampleNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Collapsible content -->
+          <div class="collapse navbar-collapse" id="basicExampleNav">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto smooth-scroll">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
     <div class="container">
       <div class="d-flex justify-content-center h-100">
         <div class="card">
           <div class="card-header">
-            <h3>Sign In</h3>
+            <h3>Log In</h3>
             <div class="d-flex justify-content-end social_icon">
               <span><i class="fab fa-facebook-square"></i></span>
               <span><i class="fab fa-google-plus-square"></i></span>
@@ -188,7 +210,7 @@ margin-left: 4px;
           </div>
           <div class="card-footer">
             <div class="d-flex justify-content-center links">
-              Don't have an account?<a href="/api/users/register">Sign Up</a>
+              Don't have an account?<a href="/api/users/register">Register</a>
             </div>
           </div>
         </div>

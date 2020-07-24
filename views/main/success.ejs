@@ -1,1 +1,294 @@
-<p>success message for adding treasure, add nav bar to return</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
+
+    <meta charset="UTF-8" />
+    <title>Treasure Hiker: Landing page</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.12.0/css/mdb.min.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body,
+      header,
+      #intro {
+        height: 100%;
+      }
+
+      #intro {
+        background: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20%283%29.jpg')
+          no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
+      .top-nav-collapse {
+        background-color: #24355c;
+      }
+      @media (max-width: 768px) {
+        .navbar:not(.top-nav-collapse) {
+          background-color: #24355c;
+        }
+      }
+      @media (min-width: 800px) and (max-width: 850px) {
+        .navbar:not(.top-nav-collapse) {
+          background-color: #24355c;
+        }
+      }
+
+      .bg-for-submit-name
+{
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+}
+.margin-top{
+    margin-top: 150px;
+}
+
+.wrap
+{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+
+p.form-title
+{
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 5%;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+form
+{
+    width: 250px;
+    margin: 0 auto;
+}
+
+form.login input[type="text"], form.login input[type="password"]
+{
+   width: 100%;
+    margin: 0;
+    padding: 5px 10px;
+    background: #fff;
+    border: 0;
+    border-bottom: 3px solid #75ba48;
+    outline: 0;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: #000;
+    outline: 0;
+
+}
+
+form.login input[type="submit"]
+{
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 16px;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+form.login input[type="submit"]:hover
+{
+    transition: background-color 0.5s ease;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #75ba48;
+    border-color: #75ba48;
+    width: 100%;
+    /* font-weight: 600 !important; */
+    padding: 7px 10px;
+    font-size: 15px !important;
+    border-radius: 0px;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+
+}
+.btn-success:hover {
+    color: #fff !important;
+    background-color: #2FC0AE !important;
+    border-color: #2FC0AE !important;
+}
+form.login label, form.login a
+{
+    font-size: 12px;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+form.login a
+{
+    transition: color 0.5s ease;
+}
+
+form.login a:hover
+{
+    color: #2ecc71;
+}
+    </style>
+  </head>
+
+  <body>
+    <!--Main Navigation-->
+    <header>
+      <!--Navbar-->
+      <nav
+        class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar"style=
+        "background-color: #24355c;"
+      >
+        <div class="container"style=
+        "background-color: #24355c;">
+          <!-- Navbar brand -->
+          <img
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ft3.ftcdn.net%2Fjpg%2F01%2F84%2F96%2F50%2F240_F_184965071_k6Y8NOQ1NmxYNok4oTlm4GHjnDAFGPtq.jpg&f=1&nofb=1"
+            alt="TH logo"
+            style="width: 2em; height: 2em; border-radius: 50%;"
+            ;
+            <!--
+            Collapse
+            button
+            --
+          />
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#basicExampleNav"
+            aria-controls="basicExampleNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Collapsible content -->
+          <div class="collapse navbar-collapse" id="basicExampleNav">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto smooth-scroll">
+              <li class="nav-item">
+                <a class="nav-link" href="/api/users">Home/Search</a>
+              </li>
+            </ul>
+            <!-- Links -->
+
+            <!-- Social Icon  -->
+            <ul class="navbar-nav nav-flex-icons">
+              <li class="nav-item">
+                <a class="nav-link" style="color:orangered;"href="/api/users/profile"><%=user.profile.name.toUpperCase()%></a>
+              </li>
+              <li class="nav-item">
+                  <a
+                  class="nav-link"
+                    href="/api/fav">
+                    <i
+                    style="color:orangered;""
+                      class="fa fa-shopping-cart"
+                    ></i>
+                  </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Collapsible content -->
+        </div>
+      </nav>
+
+      <!--Mask-->
+      <div id="intro" class="view">
+        <div class="mask rgba-black-strong">
+          <div
+            class="container-fluid d-flex align-items-center justify-content-center h-100"
+          >
+            <div class="row d-flex justify-content-center text-center">
+              <div class="col-md-10">
+                <!-- Heading -->
+
+                <!-- Divider -->
+                <hr class="hr-light" />
+
+                <!-- Description -->
+                
+                <h4 style="color: white;">Successfully Added Treasure to The Trail!</h4>
+                <hr class="hr-light" />
+                <a
+                href="/api/trails/all/<%= lat %>/<%= lon %>  "
+                class="btn btn-success" 
+                >Back To Search Results</a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/.Mask-->
+    </header>
+    <!--Main Navigation-->
+
+    <!--Main layout-->
+    
+
+    <!-- Footer -->
+    
+    <!-- Footer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.12.0/js/mdb.min.js"></script>
+    <script src="https://maps.google.com/maps/api/js"></script>
+  </body>
+</html>
+
+
+
+
+
+
