@@ -1,17 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <% include ../partials/head%>
+    <head>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
+
+    <meta charset="UTF-8" />
+    <title>Treasure Hiker: Landing page</title>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://mdbootstrap.com/api/snippets/static/download/MDB-Pro_4.12.0/css/mdb.min.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body,
+      header,
+      #intro {
+        height: 100%;
+      }
+
+      #intro {
+        background: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20%283%29.jpg')
+          no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
+      .top-nav-collapse {
+        background-color: #24355c;
+      }
+      @media (max-width: 768px) {
+        .navbar:not(.top-nav-collapse) {
+          background-color: #24355c;
+        }
+      }
+      @media (min-width: 800px) and (max-width: 850px) {
+        .navbar:not(.top-nav-collapse) {
+          background-color: #24355c;
+        }
+      }
+    </style>
+  </head>
     <title>Profile-Online Shopper</title>
   </head>
   <body>
-    <% include ../partials/navbar%>
-    <div class="container profile">
+    <nav
+        class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar"style=
+        "background-color: #24355c;"
+      >
+        <div class="container" style=
+        "background-color: #24355c;">
+          <!-- Navbar brand -->
+          <img
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ft3.ftcdn.net%2Fjpg%2F01%2F84%2F96%2F50%2F240_F_184965071_k6Y8NOQ1NmxYNok4oTlm4GHjnDAFGPtq.jpg&f=1&nofb=1"
+            alt="TH logo"
+            style="width: 2em; height: 2em; border-radius: 50%;"
+            ;
+            <!--
+            Collapse
+            button
+            --
+          />
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#basicExampleNav"
+            aria-controls="basicExampleNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Collapsible content -->
+          <div class="collapse navbar-collapse" id="basicExampleNav">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto smooth-scroll">
+              <li class="nav-item">
+                <a class="nav-link" href="/api/users">Home/Search</a>
+              </li>
+            </ul>
+            <!-- Links -->
+
+            <!-- Social Icon  -->
+            <ul class="navbar-nav nav-flex-icons">
+              <li class="nav-item">
+                <a class="nav-link" style="color:orangered;"href="/api/users/profile"><%=user.profile.name.toUpperCase()%></a>
+              </li>
+              <li class="nav-item">
+                  <a
+                  class="nav-link"
+                    href="/api/fav">
+                    <i
+                    style="color:orangered;""
+                      class="fa fa-shopping-cart"
+                    ></i>
+                  </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Collapsible content -->
+        </div>
+      </nav>
+
+    <div class="container profile"style="margin-top:2em">
       <div class="row">
         <div class="col-sm-6 offset-sm-3 col-md-6 offset-md-3">
           <hr class="colorgraph" />
           <br />
-          <h1>Profile for <%= user.profile.name %></h1>
+          <h1><%= user.profile.name %>'s Profile:</h1>
           <img
             src="/images/profile-imageholder2.jpeg"
             alt="..."
@@ -27,6 +153,7 @@
         </div>
       </div>
     </div>
+    <% include ../partials/footer %>
     <% include ../partials/scripts %>
   </body>
 </html>

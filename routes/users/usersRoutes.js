@@ -132,8 +132,9 @@ router.put('/update-profile', (req, res, next) => {
 router.put('/update-password',checkPassword, (req, res, next) => {
 
   const errors = validationResult(req);
-  if (!errors.isEmpty())
-    return res.status(422).json({ errors: errors.array() });
+  if (!errors.isEmpty()){
+  req.flash('errors', 'Unable to update user');
+  return res.redirect('/api/users/update-profile');}
   try {
     updatePassword(req.body, req.user._id)
       .then(() => {
@@ -141,8 +142,8 @@ router.put('/update-password',checkPassword, (req, res, next) => {
       })
       .catch((err) => {
         console.log(err);
-        req.flash('perrors', 'Unable to update user');
-        return res.redirect('/update/users/update-profile');
+        req.flash('errors', 'Unable to update user');
+        return res.redirect('/api/users/update-profile');
       });
   } catch (errors) {
     console.log(errors);
