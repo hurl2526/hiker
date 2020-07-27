@@ -136,19 +136,15 @@
             <% for( let i = 0; i < results.length; i++ ) { %>
               <div class="col-lg-4 col-md-12 mb-4">
                 <div class="view overlay z-depth-1-half">
-                  <a
-                  href="/api/trails/single-trail/<%=trails.data[i].lat%>/<%=trails.data[i].lon%>/<%= allLat %>/<%= allLon %>"
-                  style="text-decoration: none; color: #000;"
-                >
                   <img
-                    src="<%=trails.data[i].thumbnail%>"
+                    src="#"
                     alt="..."
                     class="card-img-top"
                   />
                   <div class="mask rgba-white-slight"></div>
                 </div>
           
-                <h4 class="my-4 font-weight-bold"><%= trails.data[i].name %> </h4>
+                <h4 class="my-4 font-weight-bold">Treasure <%= [i+1] %>: </h4>
                 <p class="grey-text">
                   Location: <%=results[i].location %></br>
                   Description: <%= results[i].description %> 
