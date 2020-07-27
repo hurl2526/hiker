@@ -2,8 +2,9 @@ const router = require('express').Router();
 const Trail = require('./models/Trail');
 const axios = require('axios');
 const Fav = require('../../fav/models/Fav');
-const Treasure = require('../../admin/categories/models/Category');
+const Treasure = require('../../admin/treasures/models/Treasure');
 const riddles = require('../../admin/trails/helper/riddles');
+const checkTreasure = require('../treasures/utils/checkTreasure');
 
 router.get('/riddle/:trailId', (req, res, next) => {
   let trailId = req.params.trailId;

@@ -55,7 +55,7 @@ app.use(
       autoReconnect: true,
     }),
     cookie: {
-      maxAge: 200000,
+      maxAge: 400000,
     },
   })
 );

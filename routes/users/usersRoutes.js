@@ -90,19 +90,6 @@ router.post(
   })
 );
 
-// router.post('/login', (req,res,next)=>{
-//   res.redirect('/api/users')
-// })
-
-
-// router.post('/add-category',checkCategory, (req, res, next) => {
-//   const errors = validationResult(req);
-//   if (!errors.isEmpty()){
-//     // return res.status(422).json({ errors: errors.array() });
-//     req.flash('errors', errors.errors[0].msg)
-//     return res.redirect('/api/admin/add-category')
-//   }
-
 
 router.get('/profile', (req, res) => {
   if (req.isAuthenticated()) {
